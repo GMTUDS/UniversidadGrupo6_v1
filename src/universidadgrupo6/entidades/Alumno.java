@@ -70,7 +70,7 @@ public class Alumno {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimieto) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

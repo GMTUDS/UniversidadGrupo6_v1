@@ -99,6 +99,7 @@ public class AlumnoData {
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setEstado(true);
+                System.out.println(alumno.toString());
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el alumno");
             }
@@ -124,6 +125,7 @@ public class AlumnoData {
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setEstado(rs.getBoolean("estado"));
                 alumnos.add(alumno);
+                System.out.println(alumno.toString());
             }
             ps.close();
         } catch (SQLException ex) {

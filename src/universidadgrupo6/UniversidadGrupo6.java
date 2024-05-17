@@ -1,9 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package universidadgrupo6;
+
+import java.time.LocalDate;
+import universidadgrupo6.accesoADatos.AlumnoData;
+import universidadgrupo6.entidades.Alumno;
 
 /**
  *
@@ -15,7 +14,12 @@ public class UniversidadGrupo6 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Alumno nando =new Alumno(49378242,"Aguero","Nando",LocalDate.of(2000,03,17),true);
+        AlumnoData alu=new AlumnoData();
+        alu.guardarAlumno(nando);
+        
+                
     }
     
 }

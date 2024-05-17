@@ -66,7 +66,7 @@ public class Alumno {
         this.nombre = nombre;
     }
 
-    public LocalDate getFechaNac() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package universidadgrupo6.accesoADatos;
 
 import java.sql.*;
@@ -51,7 +48,7 @@ public void cargarMateria(Materia materia){
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1,id);////esto revisar si pongo sin comillas tira error
+            ps.setInt(1,id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 materia = new Materia();

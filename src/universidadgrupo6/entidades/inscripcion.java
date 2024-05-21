@@ -9,8 +9,8 @@ package universidadgrupo6.entidades;
  * @author elise
  */
 public class inscripcion {
-    //private int idInscripcion;
-    //private Alumno alumno;
+    private int idInscripcion;
+    private Alumno alumno;
     private Materia materia;
     private double nota;
 

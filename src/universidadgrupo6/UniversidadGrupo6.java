@@ -24,20 +24,20 @@ public class UniversidadGrupo6 {
         //nando.setNombre("Nandooo"");
         
         //PRUEBA PARA LISTAR LOS ALUMNOS
-        alu.listarAlumnos();
-        List<Alumno> aluEst = alu.listarAlumnos();
-        aluEst.forEach((alumno) ->{
-            if(alumno != null){
-                System.out.println(alumno.toString());
-            }else{
-                System.out.println("Alumno Fuera");
-            }
-            });
+//        alu.listarAlumnos();
+//        List<Alumno> aluEst = alu.listarAlumnos();
+//        aluEst.forEach((alumno) ->{
+//            if(alumno != null){
+//                System.out.println(alumno.toString());
+//            }else{
+//                System.out.println("Alumno Fuera");
+//            }
+//            });
         //alu.buscarAlumnoPorDni(44734521);
         //alu.eliminarAlumno(3);
         
         Materia laboratorio =new Materia ("labo",2024,true);
-        Materia eda =new Materia ("EDA",2024,true);
+        //Materia eda =new Materia ("EDA",2024,true);
         Materia web =new Materia ("WEB",2024,true);
         
         MateriaData md = new MateriaData();
@@ -46,13 +46,20 @@ public class UniversidadGrupo6 {
         //md.cargarMateria(web);
         //md.buscarMateria(2);
         //md.eliminarMateria(1);
-        md.modificarMateria(eda);
+//       Materia mat=md.buscarMateria(1);
+//       
+//        mat.setNombre("redes");
+//        md.modificarMateria(mat);
         
         
-        
-        
-        
-        
-    }
+//        // md.listarMateria();
+//        List<Materia> listMate = md.listarMateria();
+//        listMate.forEach((materia) ->{
+//            
+//                System.out.println(materia.toString());
+//            
+//            });
+//    }
     
+}
 }

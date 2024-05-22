@@ -73,9 +73,12 @@ public void cargarMateria(Materia materia){
                 + "WHERE idMateria = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, materia.getIdMateria());
-            ps.setString(2, materia.getNombre());
-            ps.setInt(3, materia.getAnioMateria());
+            
+            ps.setString(1, materia.getNombre());
+            ps.setInt(2, materia.getAnioMateria());
+            ps.setBoolean(3,materia.isActivo());
+            ps.setInt(4, materia.getIdMateria());
+            
    
             int filas = ps.executeUpdate();
             if (filas == 1) {
@@ -115,7 +118,7 @@ public void cargarMateria(Materia materia){
                 materia.setActivo(rs.getBoolean("estado"));
 
                 materias.add(materia);
-                System.out.println(materia.toString());
+               
             }
             ps.close();
         } catch (SQLException ex) {

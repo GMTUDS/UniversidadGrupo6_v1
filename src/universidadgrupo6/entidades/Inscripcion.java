@@ -1,30 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package universidadgrupo6.entidades;
 
-/**
- *
- * @author elise
- */
-public class inscripcion {
+
+public class Inscripcion {
     private int idInscripcion;
     private Alumno alumno;
     private Materia materia;
     private double nota;
 
-    public inscripcion() {
+    public Inscripcion() {
     }
 
-    public inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota) {
+    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota) {
         this.idInscripcion = idInscripcion;
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
     }
 
-    public inscripcion(Alumno alumno, Materia materia, double nota) {
+    public Inscripcion(Alumno alumno, Materia materia, double nota) {
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;

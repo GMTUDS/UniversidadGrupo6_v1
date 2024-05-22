@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import universidadgrupo6.entidades.Alumno;
 import universidadgrupo6.entidades.Materia;
 
 /**
@@ -44,7 +45,7 @@ public void cargarMateria(Materia materia){
   
  public Materia buscarMateria(int id){
      Materia materia = null;
-        String sql = "SELECT idMateria,nombre,año,estado FROM Materia WHERE id = ? AND estado = 1";
+        String sql = "SELECT idMateria,nombre,año,estado FROM Materia WHERE idMateria = ? AND estado = 1";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -86,7 +87,7 @@ public void cargarMateria(Materia materia){
         }
  }
  public void eliminarMateria(int id){
-      String sql = "UPDATE materia SET activo = 0 WHERE idMateria = ?";
+      String sql = "UPDATE materia SET estado = 0 WHERE idMateria = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -122,4 +123,27 @@ public void cargarMateria(Materia materia){
         }
         return materias;
  }
+ public List<Alumno> obtenerAlumnosXMateria(int idMateria) {
+        ArrayList<Alumno> alumnosMateria = new ArrayList<>();
+        String sql = "SELECT a.idAlumno, dni, nombre, apellido, fechaNacimiento, estado"
+                    +"FROM inscripcion i, alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ? AND a.estado = 1" ;
+
+        try (PreparedStatement ps=con.prepareCall(sql)) {
+            ps.setInt(1, idMateria);
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()) {
+                Alumno alumno=new Alumno();
+                alumno.setIdAlumno(rs.getInt("id_alumno"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setFechaNacimiento(rs.getDate("FechaNacimiento").toLocalDate());
+                alumno.setEstado(rs.getBoolean("activo"));
+                alumnosMateria.add(alumno);
+                }
+                ps.close();
+            }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion");
+        } 
+        return alumnosMateria;
+    }
 }

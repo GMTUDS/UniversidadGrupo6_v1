@@ -125,7 +125,7 @@ public class AlumnoData {
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setEstado(rs.getBoolean("estado"));
                 alumnos.add(alumno);
-                System.out.println(alumno.toString());
+                
             }
             ps.close();
         } catch (SQLException ex) {

@@ -58,7 +58,7 @@ public void cargarMateria(Materia materia){
                 materia.setAnioMateria(rs.getInt("año"));
                 materia.setActivo(true);
                
-                System.out.println(materia.toString());
+//                System.out.println(materia.toString());
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el materia");
             }

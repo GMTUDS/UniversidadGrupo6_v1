@@ -11,16 +11,17 @@ import universidadgrupo6.entidades.Materia;
 
 public class InscripcionData {
     private Connection con;
-    private MateriaData matData;
-    private AlumnoData aluData;
+//    private MateriaData matData;
+//    private AlumnoData aluData;
     private MateriaData md=new MateriaData();
     private AlumnoData ad=new AlumnoData();
 
     public InscripcionData() {
+        con = Conexion.getConexion();
     }
     public void guardarInscripcion(Inscripcion inscrip){
         String sql="INSERT INTO inscripcion "
-                +"(nota, idAlumno, idMateria)"
+                +"(nota, idAlumno, idMateria) "
                 +"VALUES(?,?,?)";
         try{
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -29,17 +30,21 @@ public class InscripcionData {
             ps.setInt(3, inscrip.getMateria().getIdMateria());
             ps.executeUpdate();
             ResultSet  rs = ps.getGeneratedKeys();
+            
             if(rs.next()){
             inscrip.setIdInscripcion(1);
+            
             JOptionPane.showMessageDialog(null, "Incripcion Guardada");
             }
+            
             ps.close();
+            
         }catch (SQLException ex){
             JOptionPane.showMessageDialog(null, "ERROR AL ACCEDER A LA TABLA INSCRIPCION");
             System.out.println(ex.getMessage());
-        }   
+        }
     }
-    public List<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno) throws SQLException {
+    public List<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno) /*throws SQLException*/ {
         ArrayList<Inscripcion> inscripcionesAlu = new ArrayList<>();
         String sql = "SELECT * FROM inscripcion WHERE idAlumno = ?";
         try {
@@ -74,10 +79,11 @@ public class InscripcionData {
            Inscripcion insc = new Inscripcion();
            
                 Alumno alu=ad.buscarAlumno(rs.getInt("idAlumno"));
-                Materia mat=md.buscarMateria(rs.getInt("IdMAteria"));
+                Materia mat=md.buscarMateria(rs.getInt("idMateria"));
                 insc.setAlumno(alu);
                 insc.setMateria(mat);
                 insc.setNota(rs.getDouble("nota"));
+                insc.setIdInscripcion(rs.getInt("idInscripto"));
                 listMateria.add(insc);   
         }  
         ps.close();
@@ -88,9 +94,9 @@ public class InscripcionData {
     }
     public List<Materia> obtenerMateriasNoCursadas(int IdAlumo){
         ArrayList<Materia> materias=new ArrayList<>(); 
-        String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion, "
-                +"materia WHERE inscripcion.idMateria = materia.idMateria"+
-                "AND inscripcion.IdAlumno= ?";
+        String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion, materia WHERE "
+                + "inscripcion.idMateria = materia.idMateria AND NOT inscripcion.idAlumno = ?;";
+        
         try{
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setInt(1, IdAlumo);
@@ -130,8 +136,8 @@ public class InscripcionData {
     }
     public List<Materia> obtenerMateriasCursadas(int idAlumno) {
         ArrayList<Materia> materias = new ArrayList<>();
-        String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion, " + "materia WHERE  inscripcion.idMateria = "
-                    + "materia.idMAteria" + "AND inscripcion.idAlumno = ?;";
+        String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion, materia WHERE  inscripcion.idMateria = "
+                    + "materia.idMateria AND inscripcion.idAlumno = ?";
 
         try (PreparedStatement ps=con.prepareStatement(sql)) {
             ps.setInt(1, idAlumno);
@@ -145,7 +151,7 @@ public class InscripcionData {
                 }
                 ps.close();
             }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion"+ex.getMessage());
         } 
         return materias;
     }

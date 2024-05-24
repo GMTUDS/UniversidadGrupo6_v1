@@ -11,7 +11,7 @@ package universidadgrupo6.vistas;
 public class FormularioAlumnoView extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form NewJInternalFrame
+     * Creates new form AlumnoPorMateriaView
      */
     public FormularioAlumnoView() {
         initComponents();
@@ -26,21 +26,184 @@ public class FormularioAlumnoView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jDayChooser1 = new com.toedter.calendar.JDayChooser();
+        jLocaleChooser1 = new com.toedter.components.JLocaleChooser();
+        jSpinField1 = new com.toedter.components.JSpinField();
+        jDayChooser2 = new com.toedter.calendar.JDayChooser();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jLAlumno = new javax.swing.JLabel();
+        jLDocumento = new javax.swing.JLabel();
+        jLApellido = new javax.swing.JLabel();
+        jLNombre = new javax.swing.JLabel();
+        jLEstado = new javax.swing.JLabel();
+        jLFechaNac = new javax.swing.JLabel();
+        jBNuevo = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
+        jBGuardar = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
+        jBBuscar = new javax.swing.JButton();
+        jTFDocumento = new javax.swing.JTextField();
+        jTFApellido = new javax.swing.JTextField();
+        jTFNombre = new javax.swing.JTextField();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+
+        jTextField1.setText("jTextField1");
+
+        jRadioButton2.setText("jRadioButton2");
+
+        setIconifiable(true);
+
+        jLAlumno.setText("Alumno");
+
+        jLDocumento.setText("Documento");
+
+        jLApellido.setText("Apellido");
+
+        jLNombre.setText("Nombre");
+
+        jLEstado.setText("Estado");
+
+        jLFechaNac.setText("Fecha de Nacimiento");
+
+        jBNuevo.setText("Nuevo");
+
+        jBEliminar.setText("Eliminar");
+
+        jBGuardar.setText("Guardar");
+
+        jBSalir.setText("Salir");
+
+        jBBuscar.setText("Buscar");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
+            }
+        });
+
+        jTFDocumento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFDocumentoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLDocumento)
+                            .addComponent(jLApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLNombre, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFApellido)
+                            .addComponent(jTFDocumento)
+                            .addComponent(jTFNombre))
+                        .addGap(18, 18, 18)
+                        .addComponent(jBBuscar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBNuevo)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBEliminar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBGuardar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBSalir))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLFechaNac)
+                                .addGap(18, 18, 18)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLEstado)
+                                .addGap(44, 44, 44)
+                                .addComponent(jRadioButton1)))
+                        .addGap(0, 29, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(178, 178, 178)
+                .addComponent(jLAlumno)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLAlumno)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLDocumento)
+                    .addComponent(jBBuscar)
+                    .addComponent(jTFDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLApellido)
+                    .addComponent(jTFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLNombre)
+                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLEstado)
+                    .addComponent(jRadioButton1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLFechaNac)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBNuevo)
+                    .addComponent(jBEliminar)
+                    .addComponent(jBGuardar)
+                    .addComponent(jBSalir))
+                .addGap(34, 34, 34))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTFDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDocumentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFDocumentoActionPerformed
+
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBEliminar;
+    private javax.swing.JButton jBGuardar;
+    private javax.swing.JButton jBNuevo;
+    private javax.swing.JButton jBSalir;
+    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDayChooser jDayChooser1;
+    private com.toedter.calendar.JDayChooser jDayChooser2;
+    private javax.swing.JLabel jLAlumno;
+    private javax.swing.JLabel jLApellido;
+    private javax.swing.JLabel jLDocumento;
+    private javax.swing.JLabel jLEstado;
+    private javax.swing.JLabel jLFechaNac;
+    private javax.swing.JLabel jLNombre;
+    private com.toedter.components.JLocaleChooser jLocaleChooser1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private com.toedter.components.JSpinField jSpinField1;
+    private javax.swing.JTextField jTFApellido;
+    private javax.swing.JTextField jTFDocumento;
+    private javax.swing.JTextField jTFNombre;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

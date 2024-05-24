@@ -7,7 +7,7 @@ package universidadgrupo6.vistas;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import static jdk.nashorn.internal.objects.NativeDebug.getClass;
+
 
 /**
  *
@@ -64,11 +64,21 @@ public class MenuView extends javax.swing.JFrame {
         jMAlumno.setText("Alumno");
 
         jMIFormularioAlumno.setText("Formulario de Alumno");
+        jMIFormularioAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIFormularioAlumnoActionPerformed(evt);
+            }
+        });
         jMAlumno.add(jMIFormularioAlumno);
 
         jMenuBar2.add(jMAlumno);
 
         jMMateria.setText("Materia");
+        jMMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMMateriaActionPerformed(evt);
+            }
+        });
 
         jMIFormularioMateria.setText("Formulario de Materia");
         jMMateria.add(jMIFormularioMateria);
@@ -76,16 +86,31 @@ public class MenuView extends javax.swing.JFrame {
         jMenuBar2.add(jMMateria);
 
         jMAdministracion.setText("Adminiatración");
+        jMAdministracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAdministracionActionPerformed(evt);
+            }
+        });
 
         jMIManejoInscripciones.setText("Manejo de Inscripciones");
         jMAdministracion.add(jMIManejoInscripciones);
 
         jMIManipulacionNotas.setText("Manipulación de notas");
+        jMIManipulacionNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIManipulacionNotasActionPerformed(evt);
+            }
+        });
         jMAdministracion.add(jMIManipulacionNotas);
 
         jMenuBar2.add(jMAdministracion);
 
         jMConsultas.setText("Consultas");
+        jMConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMConsultasActionPerformed(evt);
+            }
+        });
 
         jMIAlumnosPorMateria.setText("Alumnos por Materia");
         jMConsultas.add(jMIAlumnosPorMateria);
@@ -93,6 +118,11 @@ public class MenuView extends javax.swing.JFrame {
         jMenuBar2.add(jMConsultas);
 
         jMSalir.setText("Salir");
+        jMSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSalirActionPerformed(evt);
+            }
+        });
         jMenuBar2.add(jMSalir);
 
         setJMenuBar(jMenuBar2);
@@ -110,6 +140,51 @@ public class MenuView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMIFormularioAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIFormularioAlumnoActionPerformed
+       menuGeneral.removeAll();
+       menuGeneral.repaint();
+       FormularioAlumnoView formAlumno=new FormularioAlumnoView();
+       formAlumno.setVisible(true);
+       menuGeneral.add(formAlumno);
+    }//GEN-LAST:event_jMIFormularioAlumnoActionPerformed
+
+    private void jMMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMMateriaActionPerformed
+          menuGeneral.removeAll();
+       menuGeneral.repaint();
+       FormularioMateriaView formMateria=new FormularioMateriaView();
+       formMateria.setVisible(true);
+       menuGeneral.add(formMateria);
+    }//GEN-LAST:event_jMMateriaActionPerformed
+
+    private void jMAdministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAdministracionActionPerformed
+           menuGeneral.removeAll();
+       menuGeneral.repaint();
+       FormularioInscripcionView formInscripcion=new FormularioInscripcionView();
+       formInscripcion.setVisible(true);
+       menuGeneral.add(formInscripcion);
+    }//GEN-LAST:event_jMAdministracionActionPerformed
+
+    private void jMIManipulacionNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManipulacionNotasActionPerformed
+         menuGeneral.removeAll();
+       menuGeneral.repaint();
+       CargaDeNotas cargaNota=new CargaDeNotas();
+       cargaNota.setVisible(true);
+       menuGeneral.add(cargaNota);
+    }//GEN-LAST:event_jMIManipulacionNotasActionPerformed
+
+    private void jMConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMConsultasActionPerformed
+         menuGeneral.removeAll();
+       menuGeneral.repaint();
+       AlumnosPorMateria aluMateria=new AlumnosPorMateria();
+       aluMateria.setVisible(true);
+       menuGeneral.add(aluMateria);
+    }//GEN-LAST:event_jMConsultasActionPerformed
+
+    private void jMSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSalirActionPerformed
+         menuGeneral.removeAll();
+       
+    }//GEN-LAST:event_jMSalirActionPerformed
 
     /**
      * @param args the command line arguments

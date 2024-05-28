@@ -74,25 +74,25 @@ public class MenuView extends javax.swing.JFrame {
         jMenuBar2.add(jMAlumno);
 
         jMMateria.setText("Materia");
-        jMMateria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMMateriaActionPerformed(evt);
-            }
-        });
 
         jMIFormularioMateria.setText("Formulario de Materia");
+        jMIFormularioMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIFormularioMateriaActionPerformed(evt);
+            }
+        });
         jMMateria.add(jMIFormularioMateria);
 
         jMenuBar2.add(jMMateria);
 
         jMAdministracion.setText("Adminiatración");
-        jMAdministracion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMAdministracionActionPerformed(evt);
-            }
-        });
 
         jMIManejoInscripciones.setText("Manejo de Inscripciones");
+        jMIManejoInscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIManejoInscripcionesActionPerformed(evt);
+            }
+        });
         jMAdministracion.add(jMIManejoInscripciones);
 
         jMIManipulacionNotas.setText("Manipulación de notas");
@@ -106,13 +106,13 @@ public class MenuView extends javax.swing.JFrame {
         jMenuBar2.add(jMAdministracion);
 
         jMConsultas.setText("Consultas");
-        jMConsultas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMConsultasActionPerformed(evt);
-            }
-        });
 
         jMIAlumnosPorMateria.setText("Alumnos por Materia");
+        jMIAlumnosPorMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIAlumnosPorMateriaActionPerformed(evt);
+            }
+        });
         jMConsultas.add(jMIAlumnosPorMateria);
 
         jMenuBar2.add(jMConsultas);
@@ -149,42 +149,43 @@ public class MenuView extends javax.swing.JFrame {
        menuGeneral.add(formAlumno);
     }//GEN-LAST:event_jMIFormularioAlumnoActionPerformed
 
-    private void jMMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMMateriaActionPerformed
-          menuGeneral.removeAll();
-       menuGeneral.repaint();
-       FormularioMateriaView formMateria=new FormularioMateriaView();
-       formMateria.setVisible(true);
-       menuGeneral.add(formMateria);
-    }//GEN-LAST:event_jMMateriaActionPerformed
-
-    private void jMAdministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAdministracionActionPerformed
-           menuGeneral.removeAll();
-       menuGeneral.repaint();
-       FormularioInscripcionView formInscripcion=new FormularioInscripcionView();
-       formInscripcion.setVisible(true);
-       menuGeneral.add(formInscripcion);
-    }//GEN-LAST:event_jMAdministracionActionPerformed
-
     private void jMIManipulacionNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManipulacionNotasActionPerformed
-         menuGeneral.removeAll();
+          menuGeneral.removeAll();
        menuGeneral.repaint();
        CargaDeNotas cargaNota=new CargaDeNotas();
        cargaNota.setVisible(true);
        menuGeneral.add(cargaNota);
     }//GEN-LAST:event_jMIManipulacionNotasActionPerformed
 
-    private void jMConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMConsultasActionPerformed
+    private void jMSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSalirActionPerformed
          menuGeneral.removeAll();
+         menuGeneral.repaint();
+       
+    }//GEN-LAST:event_jMSalirActionPerformed
+
+    private void jMIAlumnosPorMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAlumnosPorMateriaActionPerformed
+           menuGeneral.removeAll();
        menuGeneral.repaint();
        AlumnosPorMateria aluMateria=new AlumnosPorMateria();
        aluMateria.setVisible(true);
        menuGeneral.add(aluMateria);
-    }//GEN-LAST:event_jMConsultasActionPerformed
+    }//GEN-LAST:event_jMIAlumnosPorMateriaActionPerformed
 
-    private void jMSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSalirActionPerformed
-         menuGeneral.removeAll();
-       
-    }//GEN-LAST:event_jMSalirActionPerformed
+    private void jMIManejoInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManejoInscripcionesActionPerformed
+             menuGeneral.removeAll();
+       menuGeneral.repaint();
+       FormularioInscripcionView formInscripcion=new FormularioInscripcionView();
+       formInscripcion.setVisible(true);
+       menuGeneral.add(formInscripcion);
+    }//GEN-LAST:event_jMIManejoInscripcionesActionPerformed
+
+    private void jMIFormularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIFormularioMateriaActionPerformed
+        menuGeneral.removeAll();
+       menuGeneral.repaint();
+       FormularioMateriaView formMateria=new FormularioMateriaView();
+       formMateria.setVisible(true);
+       menuGeneral.add(formMateria);
+    }//GEN-LAST:event_jMIFormularioMateriaActionPerformed
 
     /**
      * @param args the command line arguments

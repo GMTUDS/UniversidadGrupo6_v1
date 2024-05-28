@@ -84,6 +84,7 @@ public void cargarMateria(Materia materia){
             if (filas == 1) {
                 JOptionPane.showMessageDialog(null, "Se modificó la Materia");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
             System.out.println(ex.getMessage());
@@ -99,6 +100,7 @@ public void cargarMateria(Materia materia){
             if (filas == 1) {
                 JOptionPane.showMessageDialog(null, "Materia Eliminada");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
             System.out.println(ex.getMessage());

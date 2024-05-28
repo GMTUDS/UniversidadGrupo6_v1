@@ -61,6 +61,7 @@ public class AlumnoData {
             if (filas == 1) {
                 JOptionPane.showMessageDialog(null, "Se modificó el alumno");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
             System.out.println(ex.getMessage());
@@ -77,6 +78,7 @@ public class AlumnoData {
             if (filas == 1) {
                 JOptionPane.showMessageDialog(null, "Alumno Eliminado");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
             System.out.println(ex.getMessage());
@@ -152,8 +154,8 @@ public class AlumnoData {
                 alumno.setEstado(true);
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el alumno");
-                ps.close();
             }
+                ps.close();
         }catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno "+ex.getMessage()); 
       }

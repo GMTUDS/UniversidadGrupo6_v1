@@ -83,11 +83,14 @@ public class UniversidadGrupo6 {
 //        inscribir.obtenerMateriasNoCursadas(2).forEach((inscripciones) -> {
 //            System.out.println(inscripciones.toString());
 //        });
-        inscribir.actualizarNota(1, 3, 3);
-        inscribir.obtenerInscripciones().forEach((inscripciones) -> {
+//        inscribir.actualizarNota(1, 3, 3);
+//        inscribir.obtenerInscripciones().forEach((inscripciones) -> {
+//            System.out.println(inscripciones.toString());
+//        });
+        InscripcionData insCon =new InscripcionData();
+        insCon.obtenerMateriasNoCursadas(2).forEach((inscripciones) -> {
             System.out.println(inscripciones.toString());
         });
-
     }
 
 }

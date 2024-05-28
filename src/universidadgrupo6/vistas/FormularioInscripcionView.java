@@ -42,12 +42,8 @@ public class FormularioInscripcionView extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Formulario de Inscripcion");
 
+        jTextField1.setEditable(false);
         jTextField1.setText("Seleccione un Alumno");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Listado de Materias");
 
@@ -69,6 +65,7 @@ public class FormularioInscripcionView extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jCBSelecAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBSelecAlumno.setSelectedIndex(-1);
 
         jButton1.setText("Anular ");
 
@@ -142,10 +139,6 @@ public class FormularioInscripcionView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -35,6 +35,7 @@ public class FormularioInscripcionView extends javax.swing.JInternalFrame {
         inscData=new InscripcionData();
         mData=new MateriaData();
         cargaAlumnos();
+        armarCabecera();
         
     }
      public void cargaAlumnos(){

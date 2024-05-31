@@ -160,7 +160,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
        if(filaSeleccionada!=-1){
           Alumno a =(Alumno)jCBAlumno.getSelectedItem();
            int idMateria=(Integer)modelo.getValueAt(filaSeleccionada,0);
-           double nota=(Double)modelo.getValueAt(filaSeleccionada,2);
+           double nota=Double.parseDouble((String) modelo.getValueAt(filaSeleccionada,2)) ;
            System.out.println(idMateria+" "+nota+" "+a.getIdAlumno());
            inscData.actualizarNota(a.getIdAlumno(),idMateria,nota);
            borrarFilaTabla();

@@ -9,7 +9,6 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo6.accesoADatos.AlumnoData;
 import universidadgrupo6.accesoADatos.InscripcionData;
-import universidadgrupo6.accesoADatos.MateriaData;
 import universidadgrupo6.entidades.Alumno;
 import universidadgrupo6.entidades.Inscripcion;
 import universidadgrupo6.entidades.Materia;
@@ -19,11 +18,10 @@ import universidadgrupo6.entidades.Materia;
  * @author NandoJ
  */
 public class CargaDeNotas extends javax.swing.JInternalFrame {
-    private  List<Materia> listaM;
+    private  List<Inscripcion> listaI;
  private  List<Alumno> listaA;
     private DefaultTableModel modelo;
     private InscripcionData inscData;
-    private MateriaData mData;
     private AlumnoData aData;
     public CargaDeNotas() {
         initComponents();
@@ -31,7 +29,9 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         listaA=aData.listarAlumnos();
         modelo=new DefaultTableModel();
         inscData=new InscripcionData();
-        mData=new MateriaData();
+      
+        armarCabecera();
+        cargaAlumnos();
  
     }
     
@@ -60,9 +60,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         jLabel2.setText("Seleccione un alumno");
         jLabel2.setEnabled(false);
 
-        jCBAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCBAlumno.setSelectedIndex(-1);
-        jCBAlumno.setEnabled(false);
         jCBAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBAlumnoActionPerformed(evt);
@@ -83,8 +81,18 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTNotas);
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,11 +148,28 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
         Alumno selec=(Alumno) jCBAlumno.getSelectedItem();
 
-     listaM= inscData.obtenerMateriasCursadas(selec.getIdAlumno());
-    for(Materia m:listaM){
-        modelo.addRow(new Object[]{m.getIdMateria(),m.getNombre()});
+     listaI= inscData.obtenerInscripcionesPorAlumno(selec.getIdAlumno());
+     
+    for(Inscripcion i:listaI){
+        modelo.addRow(new Object[]{i.getMateria().getIdMateria(),i.getMateria().getNombre(),i.getNota()});
     }
     }//GEN-LAST:event_jCBAlumnoActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+       int filaSeleccionada=jTNotas.getSelectedRow();
+       if(filaSeleccionada!=-1){
+          Alumno a =(Alumno)jCBAlumno.getSelectedItem();
+           int idMateria=(Integer)modelo.getValueAt(filaSeleccionada,0);
+           double nota=(Double)modelo.getValueAt(filaSeleccionada,2);
+           System.out.println(idMateria+" "+nota+" "+a.getIdAlumno());
+           inscData.actualizarNota(a.getIdAlumno(),idMateria,nota);
+           borrarFilaTabla();
+       }
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
  private void armarCabecera(){
          ArrayList<Object> filaCabecera= new ArrayList<>();
          filaCabecera.add("CODIGO");

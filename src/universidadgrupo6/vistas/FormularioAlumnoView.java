@@ -117,6 +117,7 @@ public class FormularioAlumnoView extends javax.swing.JInternalFrame {
             }
         });
 
+        jRBEstado.setSelected(true);
         jRBEstado.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

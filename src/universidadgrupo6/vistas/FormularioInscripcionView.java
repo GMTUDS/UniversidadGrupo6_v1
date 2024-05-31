@@ -133,8 +133,6 @@ public class FormularioInscripcionView extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTMateria);
 
-        jCBSelecAlumno.setSelectedIndex(-1);
-
         jBAnularInsc.setText("Anular ");
         jBAnularInsc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +148,11 @@ public class FormularioInscripcionView extends javax.swing.JInternalFrame {
         });
 
         jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -261,6 +264,11 @@ public class FormularioInscripcionView extends javax.swing.JInternalFrame {
            JOptionPane.showMessageDialog(this,"Seleccione la materia,a anular inscripcion");
        }
     }//GEN-LAST:event_jBAnularInscActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

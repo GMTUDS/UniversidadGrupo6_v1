@@ -18,23 +18,30 @@ import universidadgrupo6.entidades.Materia;
  * @author NandoJ
  */
 public class CargaDeNotas extends javax.swing.JInternalFrame {
-    private  List<Inscripcion> listaI;
- private  List<Alumno> listaA;
+
+    private List<Inscripcion> listaI;
+    private List<Alumno> listaA;
     private DefaultTableModel modelo;
     private InscripcionData inscData;
     private AlumnoData aData;
+
     public CargaDeNotas() {
         initComponents();
-          aData=new AlumnoData();
-        listaA=aData.listarAlumnos();
-        modelo=new DefaultTableModel();
-        inscData=new InscripcionData();
-      
+        aData = new AlumnoData();
+        listaA = aData.listarAlumnos();
+        modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int i, int i1) {
+                return i1 == 2;
+            }
+
+        };
+
+        inscData = new InscripcionData();
+
         armarCabecera();
         cargaAlumnos();
- 
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -146,52 +153,61 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
-        Alumno selec=(Alumno) jCBAlumno.getSelectedItem();
+        borrarFilaTabla();
+        Alumno selec = (Alumno) jCBAlumno.getSelectedItem();
 
-     listaI= inscData.obtenerInscripcionesPorAlumno(selec.getIdAlumno());
-     
-    for(Inscripcion i:listaI){
-        modelo.addRow(new Object[]{i.getMateria().getIdMateria(),i.getMateria().getNombre(),i.getNota()});
-    }
+        listaI = inscData.obtenerInscripcionesPorAlumno(selec.getIdAlumno());
+
+        for (Inscripcion i : listaI) {
+            if (i.getMateria()!=null) {
+                
+            modelo.addRow(new Object[]{i.getMateria().getIdMateria(), i.getMateria().getNombre(), i.getNota()});
+            }
+        }
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-       int filaSeleccionada=jTNotas.getSelectedRow();
-       if(filaSeleccionada!=-1){
-          Alumno a =(Alumno)jCBAlumno.getSelectedItem();
-           int idMateria=(Integer)modelo.getValueAt(filaSeleccionada,0);
-           double nota=Double.parseDouble((String) modelo.getValueAt(filaSeleccionada,2)) ;
-           System.out.println(idMateria+" "+nota+" "+a.getIdAlumno());
-           inscData.actualizarNota(a.getIdAlumno(),idMateria,nota);
-           borrarFilaTabla();
-       }
+        int filaSeleccionada = jTNotas.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            Alumno a = (Alumno) jCBAlumno.getSelectedItem();
+
+            int idMateria = (Integer) modelo.getValueAt(filaSeleccionada, 0);
+
+            Double nota = Double.parseDouble((String)modelo.getValueAt(filaSeleccionada, 2)) ;
+
+            System.out.println(idMateria + " " + nota + " " + a.getIdAlumno());
+            inscData.actualizarNota(a.getIdAlumno(), idMateria, nota);
+            borrarFilaTabla();
+        }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
- private void armarCabecera(){
-         ArrayList<Object> filaCabecera= new ArrayList<>();
-         filaCabecera.add("CODIGO");
-          filaCabecera.add("Nombre");
-           filaCabecera.add("NOTA");
-           for (Object it: filaCabecera) {
-             modelo.addColumn(it);
-         }
-           jTNotas.setModel(modelo);
-     }
-   public void cargaAlumnos(){
-         for(Alumno item :listaA){
-            jCBAlumno.addItem(item);  
-         }
-        
-     }
- private void borrarFilaTabla(){
-         int indice=modelo.getRowCount()-1;
-         for (int i = indice; i >=0; i--) {
-             modelo.removeRow(i);
-         }
-     }
+    private void armarCabecera() {
+        ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("CODIGO");
+        filaCabecera.add("Nombre");
+        filaCabecera.add("NOTA");
+        for (Object it : filaCabecera) {
+            modelo.addColumn(it);
+        }
+        jTNotas.setModel(modelo);
+    }
+
+    public void cargaAlumnos() {
+        for (Alumno item : listaA) {
+            jCBAlumno.addItem(item);
+        }
+
+    }
+
+    private void borrarFilaTabla() {
+        int indice = modelo.getRowCount() - 1;
+        for (int i = indice; i >= 0; i--) {
+            modelo.removeRow(i);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBSalir;

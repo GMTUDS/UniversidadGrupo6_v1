@@ -59,9 +59,7 @@ public void cargarMateria(Materia materia){
                 materia.setActivo(true);
                
 //                System.out.println(materia.toString());
-            } else {
-                JOptionPane.showMessageDialog(null, "No existe el materia");
-            }
+            } 
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia " + ex.getMessage());

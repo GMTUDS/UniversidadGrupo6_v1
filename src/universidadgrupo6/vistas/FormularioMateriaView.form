@@ -165,6 +165,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRBEstado">
+      <Properties>
+        <Property name="selected" type="boolean" value="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jBGuardar">
       <Properties>

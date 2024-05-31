@@ -49,6 +49,8 @@ public class MenuView extends javax.swing.JFrame {
         jMSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 600));
+        setSize(new java.awt.Dimension(700, 600));
 
         javax.swing.GroupLayout menuGeneralLayout = new javax.swing.GroupLayout(menuGeneral);
         menuGeneral.setLayout(menuGeneralLayout);
@@ -58,7 +60,7 @@ public class MenuView extends javax.swing.JFrame {
         );
         menuGeneralLayout.setVerticalGroup(
             menuGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
 
         jMAlumno.setText("Alumno");
@@ -118,9 +120,9 @@ public class MenuView extends javax.swing.JFrame {
         jMenuBar2.add(jMConsultas);
 
         jMSalir.setText("Salir");
-        jMSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMSalirActionPerformed(evt);
+        jMSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMSalirMouseClicked(evt);
             }
         });
         jMenuBar2.add(jMSalir);
@@ -157,12 +159,6 @@ public class MenuView extends javax.swing.JFrame {
        menuGeneral.add(cargaNota);
     }//GEN-LAST:event_jMIManipulacionNotasActionPerformed
 
-    private void jMSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSalirActionPerformed
-         menuGeneral.removeAll();
-         menuGeneral.repaint();
-       
-    }//GEN-LAST:event_jMSalirActionPerformed
-
     private void jMIAlumnosPorMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAlumnosPorMateriaActionPerformed
            menuGeneral.removeAll();
        menuGeneral.repaint();
@@ -186,6 +182,11 @@ public class MenuView extends javax.swing.JFrame {
        formMateria.setVisible(true);
        menuGeneral.add(formMateria);
     }//GEN-LAST:event_jMIFormularioMateriaActionPerformed
+
+    private void jMSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMSalirMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMSalirMouseClicked
 
     /**
      * @param args the command line arguments

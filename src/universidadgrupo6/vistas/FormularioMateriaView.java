@@ -66,6 +66,8 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
             }
         });
 
+        jRBEstado.setSelected(true);
+
         jBGuardar.setText("Guardar");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +191,9 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
                 int anio = materiaActual.getAnioMateria();
                 jTAño.setText("" + anio);
                 jRBEstado.setSelected(materiaActual.isActivo());
-            }
+            }else{
+            JOptionPane.showMessageDialog(this, "No existe la materia");
+        }
             
        }catch(NumberFormatException e){
            JOptionPane.showMessageDialog(this,"ingrese un dni valido");
@@ -204,6 +208,7 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         limpiarCampos();
+        materiaActual=null;
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
@@ -254,6 +259,7 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
     
     
         private void limpiarCampos(){
+            jTCodigo.setText("");
             jTNombre.setText("");
             jTAño.setText("");
             jRBEstado.setSelected(true);

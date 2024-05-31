@@ -4,12 +4,18 @@
  */
 package universidadgrupo6.vistas;
 
+import javax.swing.JOptionPane;
+import universidadgrupo6.accesoADatos.MateriaData;
+import universidadgrupo6.entidades.Materia;
+
 /**
  *
  * @author NandoJ
  */
 public class FormularioMateriaView extends javax.swing.JInternalFrame {
 
+    MateriaData materiaData = new MateriaData();
+    Materia materiaActual=null;
     /**
      * Creates new form FormularioMateriaView
      */
@@ -54,6 +60,11 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
         jLabel5.setText("Estado");
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jBGuardar.setText("Guardar");
 
@@ -146,6 +157,29 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        try {
+        Integer id=Integer.parseInt(jTCodigo.getText());
+        materiaActual= materiaData.buscarMateria(id);
+        
+        if(materiaActual!= null){
+                jTNombre.setText(materiaActual.getNombre());
+                int anio = materiaActual.getAnioMateria();
+                jTAño.setText("" + anio);
+                jRBEstado.setSelected(materiaActual.isActivo());
+            }
+            
+       }catch(NumberFormatException e){
+           JOptionPane.showMessageDialog(this,"ingrese un dni valido");
+       }catch(Exception ex){
+           JOptionPane.showMessageDialog(this,"Exception"+ex.getMessage());
+           ex.printStackTrace();
+       }
+       
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

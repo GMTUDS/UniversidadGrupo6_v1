@@ -43,13 +43,13 @@ public void cargarMateria(Materia materia){
     
 }
   
- public Materia buscarMateria(int id){
+ public Materia buscarMateria(int idMateria){
      Materia materia = null;
         String sql = "SELECT idMateria,nombre,año,estado FROM Materia WHERE idMateria = ? AND estado = 1";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1,id);
+            ps.setInt(1,idMateria);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 materia = new Materia();

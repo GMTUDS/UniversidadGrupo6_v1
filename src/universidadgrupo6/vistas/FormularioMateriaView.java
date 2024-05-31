@@ -67,12 +67,32 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
         });
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBNuevo.setText("Nuevo");
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,8 +181,8 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         try {
-        Integer id=Integer.parseInt(jTCodigo.getText());
-        materiaActual= materiaData.buscarMateria(id);
+        Integer idMateria=Integer.parseInt(jTCodigo.getText());
+        materiaActual= materiaData.buscarMateria(idMateria);
         
         if(materiaActual!= null){
                 jTNombre.setText(materiaActual.getNombre());
@@ -177,10 +197,68 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
            JOptionPane.showMessageDialog(this,"Exception"+ex.getMessage());
            ex.printStackTrace();
        }
+        
        
     
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        
+        try{
+            String nombre=jTNombre.getText();
+            Integer anio=Integer.parseInt(jTAño.getText());
+            
+            if(nombre.isEmpty()|| anio == null ){
+                JOptionPane.showMessageDialog(this, "No puedenhaber datos sin completar");
+                return;
+            }
+            boolean estado = jRBEstado.isSelected();
+                
+                
+            if(materiaActual==null){
+                materiaActual=new Materia(nombre,anio, estado);
+                materiaData.cargarMateria(materiaActual);
+            }else{
+                materiaActual.setNombre(nombre);
+                materiaActual.setAnioMateria(anio);
+                materiaActual.setActivo(estado);
+                materiaData.modificarMateria(materiaActual);
+            }
+         
+        }catch(NumberFormatException e){
+           JOptionPane.showMessageDialog(this,"ingrese un nombre valido");
+       }catch(Exception ex){
+           JOptionPane.showMessageDialog(this,"Exception"+ex.getMessage());
+           ex.printStackTrace();
+    }//GEN-LAST:event_jBGuardarActionPerformed
+}
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+         if(materiaActual != null){
+            materiaData.eliminarMateria(materiaActual.getIdMateria());
+            materiaActual=null;
+            limpiarCampos();
+        }else{
+            JOptionPane.showMessageDialog(this,"No existe la materia a eliminar");
+        }
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+    
+    
+    
+    
+        private void limpiarCampos(){
+            jTNombre.setText("");
+            jTAño.setText("");
+            jRBEstado.setSelected(true);
+        
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;
